@@ -1,39 +1,14 @@
 import './App.css';
+import { RestaurantList } from "./components/RestaurantList/RestaurantList"
 
-import { restaurants } from "./constants/fixtures"
+import { restaurants } from "./constants/fixtures-empty"
 
 function App() {
 
   return (
     <div className="App">
-      {
-        restaurants?.map((restaurant) => (
-          <div key={restaurant.id}>
-
-            <h2>{restaurant.name}</h2>
-
-            {restaurant.menu.length > 0 && (
-              <ul>
-                {restaurant.menu.map((dish) => (
-                  <li key={dish.id}>{dish.name}</li>
-                ))}
-              </ul>
-
-            )}
-
-            {restaurant.reviews.length > 0 && (
-              <ul>
-                {restaurant.reviews.map((review) => (
-                  <li key={review.id}>{review.user} : {review.text}</li>
-                ))}
-              </ul>
-
-            )}
-
-          </div>
-        ))
-      }
-
+      <h1>Рестораны</h1>
+      <RestaurantList restaurants={restaurants} />
     </div>
   );
 }
