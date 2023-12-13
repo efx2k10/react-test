@@ -1,6 +1,13 @@
-export const Review = ({ review }) => {
+import {Rate} from "../Rate/Rate";
+
+export const Review = ({review}) => {
 
     return (
-        <div>{review.user} : {review.text}</div>
+        <div>
+            <div>
+                {review.user} : {review.text}
+            </div>
+            <Rate rating={review.rating}/>
+        </div>
     );
 };

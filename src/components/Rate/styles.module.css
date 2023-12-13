@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.star {
+    background-image: url("./img/star.svg");
+    width: 12px;
+    height: 12px;
+    background-size: cover;
+}
+
+.star_full {
+    background-image: url("./img/star-gold.svg");
+}
