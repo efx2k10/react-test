@@ -1,13 +1,15 @@
-import { Review } from "../Review/Review"
-export const ReviewList = ({ reviews }) => {
+import {Review} from "../Review/Review"
+import styles from "./styles.module.css"
+
+export const ReviewList = ({reviews}) => {
 
     if (reviews.length < 1)
         return (
-            <div>Нет отзывов для показа</div>
+            <div className={styles.root}>Нет отзывов для показа</div>
         )
 
     return (
-        <div>
+        <div className={styles.root}>
             <h4>Отзывы</h4>
             {
                 reviews.map((review) => (
