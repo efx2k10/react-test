@@ -67,7 +67,7 @@ export const ReviewForm = () => {
             </div>
 
             <div className={styles.row}>
-                <Rate rating={formValue.rating} readonly={false} callBack={(rating) => dispatch({
+                <Rate rating={formValue.rating} callBack={(rating) => dispatch({
                     type: FORM_ACTION.setRating,
                     payload: rating
                 })}/>

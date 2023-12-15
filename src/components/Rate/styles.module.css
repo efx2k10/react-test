@@ -15,3 +15,7 @@
 .star_full {
     background-image: url("./img/star-gold.svg");
 }
+
+.editable {
+    cursor: pointer;
+}
