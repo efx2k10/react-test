@@ -1,14 +1,14 @@
 import { RestaurantPage } from './pages/RestaurantPage/RestaurantPage';
 import { restaurants } from "./constants/fixtures"
 import './App.css';
+import {Layout} from "./components/Layout/Layout/Layout";
 
 
 function App() {
-
   return (
-    <div className="App">
+    <Layout>
       <RestaurantPage restaurants = {restaurants}/>
-    </div>
+    </Layout>
   );
 }
 

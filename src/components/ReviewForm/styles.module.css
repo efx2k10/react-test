@@ -1,8 +1,9 @@
 .root {
     width: 50%;
     min-width: 320px;
-    background-color: honeydew;
+    background-color: #444;
     margin: auto;
+    color:#fff
 }
 
 .row {
