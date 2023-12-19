@@ -3,19 +3,18 @@ import { Restaurant } from "../../components/Restaurant/Restaurant"
 import { useState } from "react";
 
 
-export const RestaurantPage = ({ restaurants }) => {
+export const RestaurantPage = () => {
 
-  const [restaurantIndex, setRestaurantIndex] = useState(0);
+  const [restaurantId, setRestaurantId] = useState(null);
 
   return (
     <div>
       <h1>Страница Рестораны</h1>
       <Tabs
-        restaurants={restaurants}
-        onClick={setRestaurantIndex}
-        restaurantIndex={restaurantIndex} />
+        onClick={setRestaurantId}
+        activeId={restaurantId} />
 
-      <Restaurant restaurant={restaurants[restaurantIndex]} />
+        {restaurantId !==null && <Restaurant restaurantId={restaurantId} />}
     </div>
   );
 };

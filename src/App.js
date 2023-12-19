@@ -1,14 +1,18 @@
 import { RestaurantPage } from './pages/RestaurantPage/RestaurantPage';
-import { restaurants } from "./constants/fixtures"
 import './App.css';
 import {Layout} from "./components/Layout/Layout/Layout";
+import {Provider} from "react-redux";
+import {store} from "./store";
 
 
 function App() {
   return (
-    <Layout>
-      <RestaurantPage restaurants = {restaurants}/>
-    </Layout>
+      <Provider store={store}>
+          <Layout>
+              <RestaurantPage/>
+          </Layout>
+      </Provider>
+
   );
 }
 

@@ -3,23 +3,33 @@ import {ReviewList} from "../ReviewList/ReviewList"
 import {ReviewForm} from "../ReviewForm/ReviewForm";
 import {Rate} from "../Rate/Rate";
 import {useMemo} from "react";
+import {useSelector} from "react-redux";
+import {selectRestaurantById} from "../../store/restaurant/selectors";
 
-export const Restaurant = ({restaurant}) => {
+export const Restaurant = ({restaurantId}) => {
 
-    const {name, menu, reviews} = restaurant;
+    const restaurant = useSelector(state => selectRestaurantById(state, {restaurantId}))
 
-    const calculateRating = useMemo(() => {
-        return Math.round(reviews.reduce((sum, {rating}) => (sum + rating), 0) / reviews.length);
-    }, [reviews])
+
+
+    if (!restaurant) return null;
+
+
+    /*
+        const calculateRating = useMemo(() => {
+            return Math.round(reviews.reduce((sum, {rating}) => (sum + rating), 0) / reviews.length);
+        }, [reviews])
+    */
 
     return (
         <div>
-            <h2>{name}</h2>
-            <Rate rating={calculateRating}/>
-            <Menu menu={menu}/>
-            <ReviewList reviews={reviews}/>
+            <h2>{restaurant.name}</h2>
+            {/*<Rate rating={calculateRating}/>*/}
+            <Menu restaurantId={restaurantId}/>
+            <ReviewList restaurantId={restaurantId}/>
             <ReviewForm/>
         </div>
     )
+
 
 };
