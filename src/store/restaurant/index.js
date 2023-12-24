@@ -2,7 +2,6 @@ import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolk
 import {LOADING_STATUSES} from "../../constants/loadingStatuses"
 import {selectRestaurantIds} from "./selectors";
 
-
 export const fetchRestaurants = createAsyncThunk(
     'restaurant/fetchRestaurants',
     async (_, thunkAPI) => {
@@ -11,14 +10,11 @@ export const fetchRestaurants = createAsyncThunk(
         if (restaurantIds?.length) return thunkAPI.rejectWithValue(LOADING_STATUSES.alreadyLoaded);
 
         const response = await fetch('http://localhost:3001/api/restaurants/');
-
         return await response.json();
     }
 );
 
-const restaurantEntityAdapter = createEntityAdapter({
-    selectId: (restaurant) => restaurant.id
-});
+const restaurantEntityAdapter = createEntityAdapter();
 
 export const restaurantSlice = createSlice({
     name: 'restaurant',
@@ -38,8 +34,6 @@ export const restaurantSlice = createSlice({
         })
         .addCase(fetchRestaurants.fulfilled, (state, {payload}) => {
             state.status = LOADING_STATUSES.success;
-
             restaurantEntityAdapter.addMany(state, payload);
-            console.log(state);
         })
 })
