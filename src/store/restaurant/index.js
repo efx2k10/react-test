@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {LOADING_STATUSES} from "../../constants/loadingStatuses"
 import {selectRestaurantIds} from "./selectors";
+import {normalizer} from "../utils/normalizer";
 
 const initialState = {
     entities: {},
@@ -9,36 +10,38 @@ const initialState = {
 
 }
 
-const fetchRestaurants = createAsyncThunk(
+export const fetchRestaurants = createAsyncThunk(
     'restaurant/fetchRestaurants',
-    async (_, thunkAPI)=> {
+    async (_, thunkAPI) => {
         const restaurantIds = selectRestaurantIds(thunkAPI.getState())
 
         if (restaurantIds?.length) return thunkAPI.rejectWithValue(LOADING_STATUSES.alreadyLoaded);
 
         const response = await fetch('http://localhost:3001/api/restaurants/');
 
-        const restaurants = await  response.json();
+        const restaurants = await response.json();
 
-        return restaurants;
+        return normalizer(restaurants);
     }
 );
 
 export const restaurantSlice = createSlice({
     name: 'restaurant',
     initialState,
-    reducers: {
-        startLoading: (state) => {
+    extraReducers: (builder) => builder
+        .addCase(fetchRestaurants.pending, (state) => {
             state.status = LOADING_STATUSES.loading;
-        },
-        failLoading: (state) => {
+        })
+        .addCase(fetchRestaurants.rejected, (state, {payload}) => {
+            if (payload === LOADING_STATUSES.alreadyLoaded) {
+                state.status = LOADING_STATUSES.success;
+                return;
+            }
             state.status = LOADING_STATUSES.failed;
-        },
-        finishLoading: (state, {payload: {entities, ids}}) => {
+        })
+        .addCase(fetchRestaurants.fulfilled, (state, {payload}) => {
             state.status = LOADING_STATUSES.success;
-            state.entities = entities;
-            state.ids = ids;
-        },
-
-    }
+            state.entities = payload.entities;
+            state.ids = payload.ids;
+        })
 })
