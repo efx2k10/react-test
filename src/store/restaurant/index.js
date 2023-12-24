@@ -24,7 +24,6 @@ const fetchRestaurants = createAsyncThunk(
     }
 );
 
-
 export const restaurantSlice = createSlice({
     name: 'restaurant',
     initialState,
