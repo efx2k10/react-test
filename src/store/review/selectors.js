@@ -8,7 +8,7 @@ export const selectReviewIds = (state) =>
 
 export const selectReviewById = (state, {reviewId}) =>  selectReviewEntities(state)[reviewId];
 
-export const selectReviewUserById = (state, {reviewId}) =>  selectReviewById(state, {reviewId}).userId;
+export const selectReviewUserIdById = (state, {reviewId}) =>  selectReviewById(state, {reviewId}).userId;
 
 
 

@@ -43,28 +43,29 @@ export const ReviewForm = () => {
     return (
         <div className={styles.root}>
             <div className={styles.row}>
-                <label>user</label>
-                <input className={styles.formControl} type="text" value={formValue.user}
-                       onChange={(event) =>
-                           dispatch({
-                               type: FORM_ACTION.setUser,
-                               payload: event.target.value
-                           })
-                       }
-                />
+                <div className={styles.col}>
+                    <input className={styles.formControl} type="text" value={formValue.user} placeholder="name"
+                           onChange={(event) =>
+                               dispatch({
+                                   type: FORM_ACTION.setUser,
+                                   payload: event.target.value
+                               })
+                           }
+                    />
+                </div>
+
+                <div className={styles.col}>
+                    <input className={styles.formControl} type="text" value={formValue.text} placeholder="comment"
+                           onChange={(event) =>
+                               dispatch({
+                                   type: FORM_ACTION.setText,
+                                   payload: event.target.value
+                               })
+                           }
+                    />
+                </div>
             </div>
 
-            <div className={styles.row}>
-                <label>text</label>
-                <input className={styles.formControl} type="text" value={formValue.text}
-                       onChange={(event) =>
-                           dispatch({
-                               type: FORM_ACTION.setText,
-                               payload: event.target.value
-                           })
-                       }
-                />
-            </div>
 
             <div className={styles.row}>
                 <Rate rating={formValue.rating} callBack={(rating) => dispatch({

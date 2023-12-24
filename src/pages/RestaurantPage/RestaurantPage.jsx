@@ -1,20 +1,34 @@
-import { Tabs } from "../../components/Tabs/Tabs"
-import { Restaurant } from "../../components/Restaurant/Restaurant"
-import { useState } from "react";
+import {Tabs} from "../../components/Tabs/Tabs"
+import {Restaurant} from "../../components/Restaurant/Restaurant"
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {loadRestaurantsIfNotExist} from "../../store/restaurant/thunks/loadRestaurantsIfNotExist";
+import {selectIsRestaurantLoading} from "../../store/restaurant/selectors";
 
 
 export const RestaurantPage = () => {
 
-  const [restaurantId, setRestaurantId] = useState(null);
 
-  return (
-    <div>
-      <h1>Страница Рестораны</h1>
-      <Tabs
-        onClick={setRestaurantId}
-        activeId={restaurantId} />
+    const [restaurantId, setRestaurantId] = useState(null);
+    const isLoading = useSelector(selectIsRestaurantLoading)
+    const dispatch = useDispatch();
 
-        {restaurantId !==null && <Restaurant restaurantId={restaurantId} />}
-    </div>
-  );
+
+    useEffect(() => {
+        dispatch(loadRestaurantsIfNotExist)
+    }, []);
+
+
+    if (isLoading) return (<div>loading ...</div>)
+
+    return (
+        <div>
+            <h1>Страница Рестораны</h1>
+            <Tabs
+                onClick={setRestaurantId}
+                activeId={restaurantId}/>
+
+            {restaurantId !== null && <Restaurant restaurantId={restaurantId}/>}
+        </div>
+    );
 };

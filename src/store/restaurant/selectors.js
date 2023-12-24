@@ -1,3 +1,5 @@
+import {LOADING_STATUSES} from "../../constants/loadingStatuses";
+
 export const selectRestaurantModule = (state) =>
     state.restaurant;
 
@@ -15,3 +17,7 @@ export const selectRestaurantDishIdsById = (state, {restaurantId}) =>
 
 export const selectRestaurantReviewIdsById = (state, {restaurantId}) =>
     selectRestaurantById(state, {restaurantId})?.reviews;
+
+export const selectRestaurantLoadingStatus = (state) => selectRestaurantModule(state).status;
+
+export const selectIsRestaurantLoading = (state) => selectRestaurantLoadingStatus(state) === LOADING_STATUSES.loading;

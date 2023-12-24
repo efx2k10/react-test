@@ -1,16 +1,22 @@
 .root {
-    width: 50%;
-    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #444;
     margin: auto;
-    color:#fff
+    color:#fff;
+    padding: 4px 16px;
 }
 
 .row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding: 12px 0;
+}
+
+.col {
+    padding: 0 8px;
 }
 
 .form-control {
