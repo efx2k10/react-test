@@ -1,14 +1,7 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {LOADING_STATUSES} from "../../constants/loadingStatuses"
 import {selectRestaurantIds} from "./selectors";
-import {normalizer} from "../utils/normalizer";
 
-const initialState = {
-    entities: {},
-    ids: [],
-    status: LOADING_STATUSES.idle
-
-}
 
 export const fetchRestaurants = createAsyncThunk(
     'restaurant/fetchRestaurants',
@@ -19,15 +12,19 @@ export const fetchRestaurants = createAsyncThunk(
 
         const response = await fetch('http://localhost:3001/api/restaurants/');
 
-        const restaurants = await response.json();
-
-        return normalizer(restaurants);
+        return await response.json();
     }
 );
 
+const restaurantEntityAdapter = createEntityAdapter({
+    selectId: (restaurant) => restaurant.id
+});
+
 export const restaurantSlice = createSlice({
     name: 'restaurant',
-    initialState,
+    initialState: restaurantEntityAdapter.getInitialState({
+        status: LOADING_STATUSES.idle,
+    }),
     extraReducers: (builder) => builder
         .addCase(fetchRestaurants.pending, (state) => {
             state.status = LOADING_STATUSES.loading;
@@ -41,7 +38,8 @@ export const restaurantSlice = createSlice({
         })
         .addCase(fetchRestaurants.fulfilled, (state, {payload}) => {
             state.status = LOADING_STATUSES.success;
-            state.entities = payload.entities;
-            state.ids = payload.ids;
+
+            restaurantEntityAdapter.addMany(state, payload);
+            console.log(state);
         })
 })
