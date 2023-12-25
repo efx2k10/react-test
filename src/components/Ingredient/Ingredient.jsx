@@ -3,12 +3,12 @@ import useValue from "../../hooks/useValue";
 import styles from "./styles.module.css"
 
 export const Ingredient = ({ingredient}) => {
-    const {amount, decrement, increment} = useValue(0);
+    const {amount, decrement, increment} = useValue(1);
 
     return (
         <div className={styles.item}>
-            <div className={styles.left}>{ingredient}</div>
-            <div className={styles.right}>
+            <div>{ingredient}</div>
+            <div>
                 <Button className={styles.button} onClick={decrement}>-</Button>
                 <span>{amount}</span>
                 <Button className={styles.button} onClick={increment}>+</Button>

@@ -1,0 +1,30 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoLink{
+    text-decoration: none;
+    color: #fff;
+}
+
+.topMenuLink{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.topMenuLink:hover{
+    color: #ccc;
+}
+
+.topLogo {
+
+}
+.topMenu{
+
+}
+
+.topMenuItem{
+    margin-left: 32px;
+}

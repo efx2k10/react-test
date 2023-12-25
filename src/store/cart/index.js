@@ -10,6 +10,7 @@ export const cartSlice = createSlice({
         },
         removeDish: (state, {payload}) => {
             state[payload] = state[payload] ? state[payload] - 1 : 0
+            if (state[payload] === 0) delete state[payload];
         },
     }
 })

@@ -1,19 +1,11 @@
 
 .item {
     display: flex;
-}
-
-.left {
-    flex: 1;
-}
-
-.right {
-    flex: 1;
+    justify-content: space-between;
 }
 
 .button {
+    margin: 0 8px;
     background-color: #444;
     color: #fff;
-    padding: 2px 16px;
-    margin: 0 4px;
 }

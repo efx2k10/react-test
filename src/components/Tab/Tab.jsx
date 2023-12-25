@@ -1,16 +1,24 @@
-import { Button } from "../Button/Button";
 import cn from 'classnames';
 import styles from "./styles.module.css"
 import {useSelector} from "react-redux";
 import {selectRestaurantById} from "../../store/restaurant/selectors";
+import {NavLink} from "react-router-dom";
 
-export const Tab = ({ restaurantId, onClick, isActive }) => {
+export const Tab = ({restaurantId, classNames}) => {
 
     const restaurant = useSelector(state => selectRestaurantById(state, {restaurantId}))
 
     return (
-        <Button className={cn(styles.root, {[styles.active]: isActive })} onClick={onClick} >
+        <NavLink to={restaurantId} className={({isActive}) =>
+            cn(classNames,
+                styles.root,
+                {
+                    [styles.active]: isActive,
+                }
+            )
+        }>
             <span>{restaurant.name}</span>
-        </Button>
+        </NavLink>
+
     );
 };

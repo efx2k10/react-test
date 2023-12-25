@@ -9,6 +9,13 @@ export const selectRestaurantEntities = (state) =>
 export const selectRestaurantIds = (state) =>
     selectRestaurantModule(state).ids;
 
+export const selectRestaurantFilteredIdsByName = (state, {searchValue}) =>
+    Object.values(selectRestaurantEntities(state)).reduce((acc, {id, name}) => {
+        if (name.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1)
+            acc.push(id);
+        return acc;
+    }, []);
+
 export const selectRestaurantById = (state, {restaurantId}) =>
     selectRestaurantEntities(state)[restaurantId];
 

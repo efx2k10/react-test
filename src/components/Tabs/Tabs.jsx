@@ -1,22 +1,35 @@
 import {Tab} from "../Tab/Tab";
 import {useSelector} from "react-redux";
-import {selectRestaurantIds} from "../../store/restaurant/selectors";
+import {selectRestaurantFilteredIdsByName} from "../../store/restaurant/selectors";
 
-export const Tabs = ({onClick, activeId}) => {
+import styles from "./styles.module.css";
+import {useState} from "react";
+import {useSearchParams} from "react-router-dom";
 
-    const restaurantIds = useSelector(state => selectRestaurantIds(state))
+export const Tabs = () => {
+    const [search, setSearch] = useSearchParams('');
+    const restaurantIds = useSelector(state => selectRestaurantFilteredIdsByName(state,
+        {searchValue: search.get('restaurant_name') || ''}
+    ))
 
     return (
         <div>
-            {
-                restaurantIds.map((restaurantId) => (
-                    <Tab
-                        restaurantId={restaurantId}
-                        onClick={() => onClick(restaurantId)}
-                        isActive={restaurantId === activeId}
-                        key={restaurantId}/>
-                ))
-            }
+            <div className={styles.input}>
+                <input
+                    placeholder="поиск ..."
+                    value={search.get('restaurant_name') || ''}
+                    onChange={(event) => setSearch(
+                        {restaurant_name: event.target.value})
+                }
+                />
+            </div>
+            <div className={styles.tabs}>
+                {
+                    restaurantIds.map((restaurantId) => (
+                        <Tab restaurantId={restaurantId} key={restaurantId}/>
+                    ))
+                }
+            </div>
         </div>
     );
 };

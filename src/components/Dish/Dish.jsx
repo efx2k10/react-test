@@ -16,17 +16,19 @@ export const Dish = ({dishId}) => {
 
     if (!dish) return null;
 
-    const decrement = () => dispatch(cartSlice.actions.removeDish(dish.id))
-    const increment = () => dispatch(cartSlice.actions.addDish(dish.id))
+    const decrement = () => dispatch(cartSlice.actions.removeDish(dishId))
+    const increment = () => dispatch(cartSlice.actions.addDish(dishId))
 
 
     return (
         <div className={styles.pan}>
             <div className={styles.dish_pan}>
                 <div className={styles.title}>{dish.name}</div>
-                <Button className={styles.button} onClick={decrement}>-</Button>
-                {count}
-                <Button className={styles.button} onClick={increment}>+</Button>
+                <div>
+                    <Button className={styles.button} onClick={decrement}>-</Button>
+                    {count}
+                    <Button className={styles.button} onClick={increment}>+</Button>
+                </div>
             </div>
 
             {count > 0 && dish.ingredients.map((ingredient) => (

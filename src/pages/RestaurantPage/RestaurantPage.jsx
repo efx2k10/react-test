@@ -5,12 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectIsRestaurantLoading} from "../../store/restaurant/selectors";
 import {fetchRestaurants} from "../../store/restaurant";
 import {Preloader} from "../../components/Preloader/Preloader";
+import {Outlet} from "react-router-dom";
 
 
 export const RestaurantPage = () => {
 
-
-    const [restaurantId, setRestaurantId] = useState(null);
     const isLoading = useSelector(selectIsRestaurantLoading)
     const dispatch = useDispatch();
 
@@ -25,11 +24,10 @@ export const RestaurantPage = () => {
     return (
         <div>
             <h1>Страница Рестораны</h1>
-            <Tabs
-                onClick={setRestaurantId}
-                activeId={restaurantId}/>
+            <Tabs/>
+            <Outlet/>
 
-            {restaurantId !== null && <Restaurant restaurantId={restaurantId}/>}
+           {/* {restaurantId !== null && <Restaurant restaurantId={restaurantId}/>}*/}
         </div>
     );
 };

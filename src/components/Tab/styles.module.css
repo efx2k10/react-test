@@ -4,6 +4,7 @@
     border: none;
     padding: 8px 16px;
     margin: 0 2px;
+    text-decoration: none;
 }
 
 .active {

@@ -1,0 +1,19 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    margin-bottom: 16px;
+}
+
+.input input {
+    max-width: 320px;
+    width: 100%;
+    font-size: 18px;
+    padding: 4px;
+}
+
+
+
+

@@ -6,6 +6,8 @@
     margin: auto;
     color:#fff;
     padding: 4px 16px;
+    max-width: 480px;
+    width: 100%;
 }
 
 .row {
