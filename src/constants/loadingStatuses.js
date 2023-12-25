@@ -3,5 +3,6 @@ export const LOADING_STATUSES = {
     loading: 'loading',
     alreadyLoaded: 'alreadyLoaded',
     success: 'success',
+    earlyAdded: 'earlyAdded',
     failed: 'failed'
 }

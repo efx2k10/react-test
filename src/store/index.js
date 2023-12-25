@@ -1,18 +1,18 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {cartReducer} from "./cart";
+import {cartSlice} from "./cart";
 import {restaurantSlice} from "./restaurant";
-import {dishReducer} from "./dish";
-import {reviewReducer} from "./review";
-import {userReducer} from "./user";
+import {dishSlice} from "./dish";
+import {reviewSlice} from "./review";
+import {userSlice} from "./user";
 import {combineReducers} from "redux";
 
 
 const rootReducer = combineReducers({
-    cart: cartReducer,
+    cart: cartSlice.reducer,
     restaurant: restaurantSlice.reducer,
-    dish: dishReducer,
-    review: reviewReducer,
-    user: userReducer
+    dish: dishSlice.reducer,
+    review: reviewSlice.reducer,
+    user: userSlice.reducer
 })
 
 export const store = configureStore(

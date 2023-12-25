@@ -1,11 +1,11 @@
 import {Ingredient} from "../Ingredient/Ingredient";
 import {useSelector, useDispatch} from "react-redux";
-import {addDish, removeDish} from "../../store/cart/actions";
 import {Button} from "../Button/Button";
 import {selectDishCountById} from "../../store/cart/selectors";
 
 import styles from "./styles.module.css"
 import {selectDishById} from "../../store/dish/selectors";
+import {cartSlice} from "../../store/cart";
 
 export const Dish = ({dishId}) => {
 
@@ -16,8 +16,8 @@ export const Dish = ({dishId}) => {
 
     if (!dish) return null;
 
-    const decrement = () => dispatch(removeDish(dishId))
-    const increment = () => dispatch(addDish(dishId))
+    const decrement = () => dispatch(cartSlice.actions.removeDish(dish.id))
+    const increment = () => dispatch(cartSlice.actions.addDish(dish.id))
 
 
     return (

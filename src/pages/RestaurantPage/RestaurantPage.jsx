@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectIsRestaurantLoading} from "../../store/restaurant/selectors";
 import {fetchRestaurants} from "../../store/restaurant";
+import {Preloader} from "../../components/Preloader/Preloader";
 
 
 export const RestaurantPage = () => {
@@ -19,7 +20,7 @@ export const RestaurantPage = () => {
     }, [dispatch]);
 
 
-    if (isLoading) return (<div>loading ...</div>)
+    if (isLoading) return (<Preloader/>)
 
     return (
         <div>

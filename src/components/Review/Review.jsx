@@ -1,7 +1,6 @@
 import {Rate} from "../Rate/Rate";
 import {useSelector} from "react-redux";
 import {selectReviewById} from "../../store/review/selectors";
-import {selectUserById} from "../../store/user/selectors";
 import {UserIcon} from "../UserIcon/UserIcon";
 
 export const Review = ({reviewId}) => {
