@@ -1,4 +1,4 @@
-import {Button} from "../../components/Button/Button";
+import {CartCounter} from "../../components/CartCounter/CartCounter";
 import {useNavigate} from "react-router-dom";
 
 export const NotFoundPage = () => {
@@ -9,9 +9,9 @@ export const NotFoundPage = () => {
         <div>
             <h1>404</h1>
             <div>
-                <Button onClick={() => navigate('/', {replace: true})}>
+                <CartCounter onClick={() => navigate('/', {replace: true})}>
                     На главную страницу
-                </Button>
+                </CartCounter>
             </div>
         </div>
     );

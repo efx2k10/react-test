@@ -5,9 +5,13 @@ import {useEffect} from "react";
 import {fetchDishesByRestaurantId} from "../../store/dish";
 import {selectIsDishLoading} from "../../store/dish/selectors";
 import {Preloader} from "../Preloader/Preloader";
+import {useParams} from "react-router-dom";
 
 
-export const Menu = ({restaurantId}) => {
+export const Menu = () => {
+
+    const {restaurantId} = useParams();
+
     const isLoading = useSelector(selectIsDishLoading)
     const dispatch = useDispatch();
     const dishIds = useSelector((state) =>

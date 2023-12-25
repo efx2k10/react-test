@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 export const Preloader = () => {
     return (
-        <div >
+        <div>
             <p className={styles.loader}></p>
         </div>
     )

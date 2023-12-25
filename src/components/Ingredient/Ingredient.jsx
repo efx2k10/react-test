@@ -1,6 +1,6 @@
-import {Button} from "../Button/Button";
 import useValue from "../../hooks/useValue";
 import styles from "./styles.module.css"
+import {Button} from "../Button/Button";
 
 export const Ingredient = ({ingredient}) => {
     const {amount, decrement, increment} = useValue(1);

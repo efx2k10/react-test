@@ -1,0 +1,11 @@
+.cartCounter {
+    display: block;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    border-radius: 50%;
+    background-color: red;
+    line-height: 32px;
+    width: 32px;
+    text-align: center;
+}

@@ -6,9 +6,11 @@ import {useEffect} from "react";
 import {Preloader} from "../Preloader/Preloader";
 import {fetchReviewsByRestaurantId} from "../../store/review";
 import {selectRestaurantReviewIdsById} from "../../store/restaurant/selectors";
+import {useParams} from "react-router-dom";
 
-export const ReviewList = ({restaurantId}) => {
+export const ReviewList = () => {
 
+    const {restaurantId} = useParams();
     /*
     const calculateRating = useMemo(() => {
         return Math.round(reviews.reduce((sum, {rating}) => (sum + rating), 0) / reviews.length);
@@ -36,7 +38,7 @@ export const ReviewList = ({restaurantId}) => {
 
     return (
         <div className={styles.root}>
-            <h4>Отзывы</h4>
+            <h3>Отзывы</h3>
             {
                 reviewIds.map((reviewId) => (
                     <Review reviewId={reviewId} key={reviewId}/>

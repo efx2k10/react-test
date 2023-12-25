@@ -12,11 +12,8 @@ export const Tab = ({restaurantId, classNames}) => {
         <NavLink to={restaurantId} className={({isActive}) =>
             cn(classNames,
                 styles.root,
-                {
-                    [styles.active]: isActive,
-                }
-            )
-        }>
+                {[styles.active]: isActive,}
+            )}>
             <span>{restaurant.name}</span>
         </NavLink>
 

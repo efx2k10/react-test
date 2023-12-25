@@ -1,0 +1,14 @@
+.reviewTab{
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #444;
+    padding: 4px 16px;
+    color: #fff;
+    margin: 0 2px;
+    text-decoration: none;
+}
+
+.reviewTabActive {
+    background-color: #ccc;
+    color: #444;
+}

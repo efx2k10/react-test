@@ -1,15 +1,16 @@
-import {Menu} from "../Menu/Menu"
-import {ReviewList} from "../ReviewList/ReviewList"
 import {ReviewForm} from "../ReviewForm/ReviewForm";
 import {Rate} from "../Rate/Rate";
 import {useMemo} from "react";
 import {useSelector} from "react-redux";
 import {selectRestaurantById} from "../../store/restaurant/selectors";
-import {useParams} from "react-router-dom";
+import {Link, Outlet, useParams} from "react-router-dom";
+import cn from "classnames";
+import styles from "./styles.module.css";
 
 export const Restaurant = () => {
 
-    const {restaurantId} = useParams();
+    const {restaurantId, activeTab} = useParams();
+
 
     const restaurant = useSelector(state => selectRestaurantById(state, {restaurantId}))
 
@@ -28,8 +29,20 @@ export const Restaurant = () => {
         <div>
             <h2>{restaurant.name}</h2>
             {/*<Rate rating={calculateRating}/>*/}
-            <Menu restaurantId={restaurantId}/>
-            <ReviewList restaurantId={restaurantId}/>
+
+            <Link to="" className={cn(styles.reviewTab,  {
+                [styles.reviewTabActive]: activeTab !== "reviews"
+            })}>
+                Меню
+            </Link>
+            <Link to="reviews" className={cn(styles.reviewTab,  {
+                [styles.reviewTabActive]: activeTab === "reviews"
+            })}>
+                Отзывы
+            </Link>
+
+
+            <Outlet/>
             <ReviewForm/>
         </div>
     )

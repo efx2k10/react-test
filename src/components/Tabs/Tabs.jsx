@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {selectRestaurantFilteredIdsByName} from "../../store/restaurant/selectors";
 
 import styles from "./styles.module.css";
-import {useState} from "react";
 import {useSearchParams} from "react-router-dom";
 
 export const Tabs = () => {

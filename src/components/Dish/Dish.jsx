@@ -1,11 +1,11 @@
 import {Ingredient} from "../Ingredient/Ingredient";
 import {useSelector, useDispatch} from "react-redux";
-import {Button} from "../Button/Button";
 import {selectDishCountById} from "../../store/cart/selectors";
 
 import styles from "./styles.module.css"
 import {selectDishById} from "../../store/dish/selectors";
 import {cartSlice} from "../../store/cart";
+import {Button} from "../Button/Button";
 
 export const Dish = ({dishId}) => {
 

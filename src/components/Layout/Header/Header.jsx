@@ -1,6 +1,8 @@
 import {NavLink} from "react-router-dom";
 import styles from "./styles.module.css"
 import cn from 'classnames';
+import {CartCounter} from "../../CartCounter/CartCounter";
+
 
 export const Header  = ({className}) => {
     return (
@@ -16,6 +18,7 @@ export const Header  = ({className}) => {
                 </NavLink>
                 <NavLink to="/cart" className={cn(styles.topMenuLink, styles.topMenuItem)}>
                     Корзина
+                    <CartCounter/>
                 </NavLink>
             </div>
 

@@ -1,6 +1,5 @@
 import {Tabs} from "../../components/Tabs/Tabs"
-import {Restaurant} from "../../components/Restaurant/Restaurant"
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectIsRestaurantLoading} from "../../store/restaurant/selectors";
 import {fetchRestaurants} from "../../store/restaurant";
@@ -26,8 +25,6 @@ export const RestaurantPage = () => {
             <h1>Страница Рестораны</h1>
             <Tabs/>
             <Outlet/>
-
-           {/* {restaurantId !== null && <Restaurant restaurantId={restaurantId}/>}*/}
         </div>
     );
 };
