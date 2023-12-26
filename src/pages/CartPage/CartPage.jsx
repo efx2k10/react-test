@@ -9,8 +9,6 @@ export const CartPage = () => {
         <div>Корзина пуста</div>
     );
 
-
-
     return (
         <div>
             <h1>Ваш заказ</h1>

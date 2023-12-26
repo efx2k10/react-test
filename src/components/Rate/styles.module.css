@@ -3,6 +3,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 16px;
 }
 
 .star {
@@ -10,6 +11,11 @@
     width: 12px;
     height: 12px;
     background-size: cover;
+}
+
+.star.size_l {
+    width: 32px !important;
+    height: 32px !important;
 }
 
 .star_full {

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #444;
+    background-color: #ccc;
     margin: auto;
     color:#fff;
     padding: 4px 16px;
@@ -21,6 +21,7 @@
     padding: 0 8px;
 }
 
-.form-control {
-
+.col input{
+    font-size: 18px;
+    padding: 4px;
 }

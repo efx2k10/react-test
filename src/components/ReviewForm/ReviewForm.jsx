@@ -44,7 +44,7 @@ export const ReviewForm = () => {
         <div className={styles.root}>
             <div className={styles.row}>
                 <div className={styles.col}>
-                    <input className={styles.formControl} type="text" value={formValue.user} placeholder="name"
+                    <input type="text" value={formValue.user} placeholder="name"
                            onChange={(event) =>
                                dispatch({
                                    type: FORM_ACTION.setUser,
@@ -55,7 +55,7 @@ export const ReviewForm = () => {
                 </div>
 
                 <div className={styles.col}>
-                    <input className={styles.formControl} type="text" value={formValue.text} placeholder="comment"
+                    <input type="text" value={formValue.text} placeholder="comment"
                            onChange={(event) =>
                                dispatch({
                                    type: FORM_ACTION.setText,
@@ -71,7 +71,7 @@ export const ReviewForm = () => {
                 <Rate rating={formValue.rating} callBack={(rating) => dispatch({
                     type: FORM_ACTION.setRating,
                     payload: rating
-                })}/>
+                })} size="l"/>
             </div>
 
             <div className={styles.row}>

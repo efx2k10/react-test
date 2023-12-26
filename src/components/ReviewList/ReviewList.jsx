@@ -1,12 +1,11 @@
 import {Review} from "../Review/Review"
-import styles from "./styles.module.css"
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectIsReviewLoading} from "../../store/review/selectors";
-import {useEffect} from "react";
 import {Preloader} from "../Preloader/Preloader";
-import {fetchReviewsByRestaurantId} from "../../store/review";
 import {selectRestaurantReviewIdsById} from "../../store/restaurant/selectors";
 import {useParams} from "react-router-dom";
+
+import styles from "./styles.module.css"
 
 export const ReviewList = () => {
 
@@ -18,16 +17,10 @@ export const ReviewList = () => {
 */
 
     const isLoading = useSelector(selectIsReviewLoading);
-    const dispatch = useDispatch();
 
     const reviewIds = useSelector((state) =>
         selectRestaurantReviewIdsById(state, {restaurantId})
     );
-
-    useEffect(() => {
-        dispatch(fetchReviewsByRestaurantId(restaurantId));
-    }, [restaurantId, dispatch]);
-
 
     if (isLoading) return (<Preloader/>)
 
